@@ -1,0 +1,35 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+
+}
+.container {
+	max-width: 650px;
+	background-color: #efefef;	
+	height: 350px;
+	margin: 0 auto;	
+	padding: 10px;
+}
+#cat {
+	float: right;
+
+}
+#cat-list {
+	float: left;	
+}
+#cat-img {
+	width: 200px;
+	height: 150px;	
+}
+#img-url {
+	font-size: 0.8em;	
+}
+#adminSec {
+	max-width: 650px;
+	background-color: #8FA0B3;	
+	height: 350px;
+	margin: 0 auto;	
+	padding: 10px;		
+}
+
