@@ -74,9 +74,14 @@ var octopus = {
 		model.adminVis = false;
 	},
 	
-	saveAdmin: function(){
-		setCurrentCat();
+	saveAdmin: function(name){
+		//setCurrentCat(cat);
+		//model.selectedCat = cat;
+		//alert(model.selectedCat);
+		alert("name = " + name);
+		model.selectedCat = name;
 
+		catView.render();
 		
 	}
 		
@@ -165,9 +170,9 @@ var adminView = {
 	init: function(){
 		// Store pointers to our DOM elements for easy access later	
 		var selectedCat = octopus.getSelectedCat();	
-		this.name = document.getElementById('cat-name');
-		this.adminImgUrl = document.getElementById('cat-img');
-		this.numClicks = catView.countElem;
+		document.getElementById('name').value = selectedCat.name;
+		document.getElementById('adminImgUrl').value = selectedCat.image;
+		document.getElementById('num-clicks').value = selectedCat.clicks;
 		this.saveBtn = document.getElementById('save');
 		this.cancelBtn = document.getElementById('cancel');
 		this.adminBtn = document.getElementById('admin');
@@ -182,23 +187,22 @@ var adminView = {
 			octopus.showAdmin();
 		});
 		
-		this.saveBtn.addEventListener('click', function(){
+		this.saveBtn.addEventListener('click', function(name){
+			this.name = document.getElementById('name').value;
+			this.numClicks = document.getElementById('num-clicks').value;
+			this.adminImgUrl = document.getElementById('adminImgUrl').value;
+			//alert("this.adminImgUrl = " + this.adminImgUrl);
 			octopus.saveAdmin();
-			alert("saveAdmin called");
 		});	
 		
 	},
 	
 	render: function(){
-		var selectedCat = octopus.getSelectedCat(); // (which gets it from the model)
 		this.adminVis = document.getElementById("adminSec").style.visibility = "visible";
 		
-		this.numClicks.textContent = document.getElementById('cat-count');
-		this.name.textContent = selectedCat.name;
-		this.adminImgUrl.textContent = catView.image;
-		
-		//  Render this view (update the DOM elements with the right values)
-		//this.render();
+		this.numClicks = document.getElementById('num-clicks').value;
+		this.name = document.getElementById('name').value;
+		this.adminImgUrl = document.getElementById('adminImgUrl').value;
 
 	}
 	
