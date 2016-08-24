@@ -74,13 +74,14 @@ var octopus = {
 		model.adminVis = false;
 	},
 	
-	saveAdmin: function(name){
-		//setCurrentCat(cat);
-		//model.selectedCat = cat;
-		//alert(model.selectedCat);
+	saveAdmin: function(name, numClicks, adminImgUrl){
 		alert("name = " + name);
-		model.selectedCat = name;
-
+		alert("numClicks = " + numClicks);
+		alert("adminImgUrl = " + adminImgUrl);
+		model.selectedCat.name = name;
+		model.selectedCat.clicks = numClicks;
+		model.selectedCat.image = adminImgUrl;
+		alert(model.selectedCat.name);
 		catView.render();
 		
 	}
@@ -187,12 +188,12 @@ var adminView = {
 			octopus.showAdmin();
 		});
 		
-		this.saveBtn.addEventListener('click', function(name){
+		this.saveBtn.addEventListener('click', function(){
 			this.name = document.getElementById('name').value;
 			this.numClicks = document.getElementById('num-clicks').value;
 			this.adminImgUrl = document.getElementById('adminImgUrl').value;
 			//alert("this.adminImgUrl = " + this.adminImgUrl);
-			octopus.saveAdmin();
+			octopus.saveAdmin(this.name, this.numClicks, this.adminImgUrl);
 		});	
 		
 	},
